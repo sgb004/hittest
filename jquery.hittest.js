@@ -1,4 +1,7 @@
-/*Hittest para Jquery por Salvador Gonzalez (@sgb004)*/
+/**
+ * Hittest para Jquery por @sgb004
+ * @version 1.0
+ */
 jQuery.fn.extend({
 	hittest: function(elmB){
 		var elmA_Obj = jQuery(this);

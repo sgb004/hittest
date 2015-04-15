@@ -15,31 +15,21 @@ jQuery.fn.extend({
 		var elmB_posLeft = elmB_pos.left;
 		var elmB_Wid = elmB_posLeft + elmB_Obj.width();
 
-		var choque = 0;
-		var choTop = 0;
-		var choLeft = 0;
+		var choque = false;
+		var choTop = false;
+		var choLeft = false;
 		
-		if(elmB_posTop >= elmA_posTop && elmB_posTop <= elmA_hei){
-			choTop = elmA_hei-elmB_posTop;
-		}else if(elmB_hei >= elmA_posTop && elmB_hei <= elmA_hei){
-			choTop = elmB_hei-elmA_posTop;
-		}else if(elmA_posTop >= elmB_posTop && elmA_posTop <= elmB_hei) {
-			choTop = elmB_hei-elmA_posTop; 
-		}else if(elmA_hei >= elmB_posTop && elmA_hei <= elmB_hei){
-			choTop = elmA_hei-elmB_posTop;
+		if((elmB_posTop >= elmA_posTop && elmB_posTop <= elmA_hei) || (elmB_hei >= elmA_posTop && elmB_hei <= elmA_hei)){
+			choTop = true; 
+		}else if((elmA_posTop >= elmB_posTop && elmA_posTop <= elmB_hei) || (elmA_hei >= elmB_posTop && elmA_hei <= elmB_hei)){
+			choTop = true; 
 		}
-
-		if(elmB_posLeft >= elmA_posLeft && elmB_posLeft <= elmA_Wid){
-			choLeft = elmA_Wid-elmB_posLeft;
-		}else if(elmB_Wid >= elmA_posLeft && elmB_Wid <= elmA_Wid){
-			choLeft = elmB_Wid-elmA_posLeft;
-		}else if(elmA_posLeft >= elmB_posLeft && elmA_posLeft <= elmB_Wid){
-			choLeft = elmB_Wid-elmA_posLeft;
-		}else if(elmA_Wid >= elmB_posLeft && elmA_Wid <= elmB_Wid){
-			choLeft = elmA_Wid-elmB_posLeft;
+		if((elmB_posLeft >= elmA_posLeft && elmB_posLeft <= elmA_Wid) || (elmB_Wid >= elmA_posLeft && elmB_Wid <= elmA_Wid)){
+			choLeft = true;
+		}else if((elmA_posLeft >= elmB_posLeft && elmA_posLeft <= elmB_Wid) || (elmA_Wid >= elmB_posLeft && elmA_Wid <= elmB_Wid)){
+			choLeft = true;
 		}
-
-		choque = choTop*choLeft;
+		if(choTop == true && choLeft == true){choque = true;}
 		return choque;
 	}
 });
